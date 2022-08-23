@@ -7,6 +7,8 @@ Python3 was used to run this scripts, with following required packages:
 - math
 - Bio.PDB module
 
+For running the metal ligand predictions, please see requirements Metalloproteome algorithm ([here](https://github.com/Elcock-Lab/Metalloproteome)).
+
 ## Script workflow
 The scripts takes a UniProtKB FASTA file as input, which should be placed in the FASTA subfolder. This is the sole required argument of the script, e.g.:
 
@@ -22,7 +24,12 @@ The scripts takes a UniProtKB FASTA file as input, which should be placed in the
   - Five dihedral angles are calculated (X1, X2, X3, X1' and X2') using Bio.PDB calc_dihedral().
   - The average pLDDT is calculated as (pLDDT SS_Cys1 + pLDDT SS_Cys2) / 2 
 - For all proteins:
-  - Metal ligand binding was predicted using the Metalloproteome algorithm ([xx](https://github.com/Elcock-Lab/Metalloproteome)), required files were copied within this repository.
-  - The length and number of cysteine of the protein is provided (derived from FASTA).
+  - Metal ligand binding was predicted using the Metalloproteome algorithm ([github link](https://github.com/Elcock-Lab/Metalloproteome)), required files were copied within this repository.
+  - The TaxID, length and number of cysteine of the protein is provided (derived from FASTA).
+  - The download AlphaFold2 model filename is provided.
   - Optionally a pKa value can be predicted using propka3.0 (requires local install) - however this takes relatively long making whole proteome predictions too long, hence was skipped here.
 
+## Output
+
+All predictions are stored in a tab-delimited file 'results.txt' with columns providing all information calculated above for each protein cysteine individually (rows).
+If running multiple FASTA files after each other, novel results/rows will be appended to this output file. UniProtKB protein accessions that already have been processed, and thus are within the current 'results.txt' file, will not be re-processed.
