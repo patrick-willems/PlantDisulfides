@@ -1,0 +1,108 @@
+TaxID	Species	Proteins	AA_total	C	prop_C
+88036	Selaginella moellendorffii	33119	13317936	253762	0.019054
+4081	Solanum lycopersicum	34655	12261183	234815	0.019151
+3702	Arabidopsis thaliana	27475	11124147	207864	0.018686
+3218	Physcomitrium patens	31358	11734425	215926	0.018401
+3694	Populus trichocarpa	42532	15750084	303421	0.019265
+3055	Chlamydomonas reinhardtii	17614	13015830	172096	0.013222
+4577	Zea mays	39207	14534640	273307	0.018804
+3847	Glycine max	55855	21729948	416821	0.019182
+70448	Ostreococcus tauri	7743	3561433	57419	0.016122
+51351	Brassica rapa subsp. pekinensis	40801	15958951	285707	0.017903
+13333	Amborella trichopoda	27366	8595683	163976	0.019077
+29655	Zostera marina	20358	7946007	148617	0.018703
+39947	Oryza sativa subsp. japonica	43673	13398719	260517	0.019443
+3197	Marchantia polymorpha	19120	7753135	137091	0.017682
+69332	Chara braunii	34644	22684904	361906	0.015954
+
+TaxID	Species	Motif	Count	Normalized
+88036	Selaginella moellendorffii	CC	7408	2.919271
+88036	Selaginella moellendorffii	CXC	6095	2.401857
+88036	Selaginella moellendorffii	CXXC	9873	3.890653
+88036	Selaginella moellendorffii	CXXXC	5848	2.304522
+88036	Selaginella moellendorffii	CXXXXC	6606	2.603227
+88036	Selaginella moellendorffii	CXXXXXC	6272	2.471607
+4081	Solanum lycopersicum	CC	6719	2.861402
+4081	Solanum lycopersicum	CXC	6112	2.602900
+4081	Solanum lycopersicum	CXXC	9951	4.237804
+4081	Solanum lycopersicum	CXXXC	6007	2.558184
+4081	Solanum lycopersicum	CXXXXC	6348	2.703405
+4081	Solanum lycopersicum	CXXXXXC	6151	2.619509
+3702	Arabidopsis thaliana	CC	5880	2.828773
+3702	Arabidopsis thaliana	CXC	5328	2.563214
+3702	Arabidopsis thaliana	CXXC	10768	5.180310
+3702	Arabidopsis thaliana	CXXXC	5709	2.746507
+3702	Arabidopsis thaliana	CXXXXC	5976	2.874957
+3702	Arabidopsis thaliana	CXXXXXC	5446	2.619982
+3218	Physcomitrium patens	CC	6144	2.845419
+3218	Physcomitrium patens	CXC	5567	2.578198
+3218	Physcomitrium patens	CXXC	9130	4.228300
+3218	Physcomitrium patens	CXXXC	5757	2.666191
+3218	Physcomitrium patens	CXXXXC	6094	2.822263
+3218	Physcomitrium patens	CXXXXXC	5609	2.597649
+3694	Populus trichocarpa	CC	9051	2.982984
+3694	Populus trichocarpa	CXC	8058	2.655716
+3694	Populus trichocarpa	CXXC	13339	4.396202
+3694	Populus trichocarpa	CXXXC	8085	2.664615
+3694	Populus trichocarpa	CXXXXC	8374	2.759862
+3694	Populus trichocarpa	CXXXXXC	8100	2.669558
+3055	Chlamydomonas reinhardtii	CC	5053	2.936152
+3055	Chlamydomonas reinhardtii	CXC	4050	2.353338
+3055	Chlamydomonas reinhardtii	CXXC	6359	3.695031
+3055	Chlamydomonas reinhardtii	CXXXC	4564	2.652008
+3055	Chlamydomonas reinhardtii	CXXXXC	4391	2.551483
+3055	Chlamydomonas reinhardtii	CXXXXXC	4589	2.666535
+4577	Zea mays	CC	8561	3.132375
+4577	Zea mays	CXC	7674	2.807831
+4577	Zea mays	CXXC	12113	4.432012
+4577	Zea mays	CXXXC	7411	2.711603
+4577	Zea mays	CXXXXC	7804	2.855397
+4577	Zea mays	CXXXXXC	7532	2.755875
+3847	Glycine max	CC	12120	2.907723
+3847	Glycine max	CXC	11108	2.664933
+3847	Glycine max	CXXC	18326	4.396611
+3847	Glycine max	CXXXC	10941	2.624868
+3847	Glycine max	CXXXXC	11394	2.733547
+3847	Glycine max	CXXXXXC	10776	2.585282
+70448	Ostreococcus tauri	CC	996	1.734617
+70448	Ostreococcus tauri	CXC	1222	2.128215
+70448	Ostreococcus tauri	CXXC	2511	4.373117
+70448	Ostreococcus tauri	CXXXC	1540	2.682039
+70448	Ostreococcus tauri	CXXXXC	1435	2.499173
+70448	Ostreococcus tauri	CXXXXXC	1452	2.528780
+51351	Brassica rapa subsp. pekinensis	CC	7790	2.726570
+51351	Brassica rapa subsp. pekinensis	CXC	6922	2.422762
+51351	Brassica rapa subsp. pekinensis	CXXC	13184	4.614518
+51351	Brassica rapa subsp. pekinensis	CXXXC	7128	2.494864
+51351	Brassica rapa subsp. pekinensis	CXXXXC	7819	2.736720
+51351	Brassica rapa subsp. pekinensis	CXXXXXC	7361	2.576416
+13333	Amborella trichopoda	CC	4160	2.536957
+13333	Amborella trichopoda	CXC	3950	2.408889
+13333	Amborella trichopoda	CXXC	6403	3.904840
+13333	Amborella trichopoda	CXXXC	3994	2.435722
+13333	Amborella trichopoda	CXXXXC	4392	2.678441
+13333	Amborella trichopoda	CXXXXXC	4041	2.464385
+29655	Zostera marina	CC	3951	2.658511
+29655	Zostera marina	CXC	3731	2.510480
+29655	Zostera marina	CXXC	6565	4.417395
+29655	Zostera marina	CXXXC	3502	2.356393
+29655	Zostera marina	CXXXXC	3885	2.614102
+29655	Zostera marina	CXXXXXC	3725	2.506443
+39947	Oryza sativa subsp. japonica	CC	8399	3.223974
+39947	Oryza sativa subsp. japonica	CXC	7628	2.928024
+39947	Oryza sativa subsp. japonica	CXXC	10975	4.212777
+39947	Oryza sativa subsp. japonica	CXXXC	7428	2.851253
+39947	Oryza sativa subsp. japonica	CXXXXC	7354	2.822848
+39947	Oryza sativa subsp. japonica	CXXXXXC	7243	2.780241
+3197	Marchantia polymorpha	CC	3893	2.839720
+3197	Marchantia polymorpha	CXC	3528	2.573473
+3197	Marchantia polymorpha	CXXC	5679	4.142504
+3197	Marchantia polymorpha	CXXXC	3543	2.584415
+3197	Marchantia polymorpha	CXXXXC	4020	2.932359
+3197	Marchantia polymorpha	CXXXXXC	3718	2.712067
+69332	Chara braunii	CC	7498	2.071809
+69332	Chara braunii	CXC	6497	1.795218
+69332	Chara braunii	CXXC	14691	4.059341
+69332	Chara braunii	CXXXC	7218	1.994441
+69332	Chara braunii	CXXXXC	8291	2.290926
+69332	Chara braunii	CXXXXXC	9384	2.592938
