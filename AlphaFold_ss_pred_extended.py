@@ -19,7 +19,7 @@ from Bio.PDB.ResidueDepth import residue_depth
 outfile = 'results_ext.txt'
 f = open(outfile, "a")
 if os.stat('results_ext.txt').st_size == 0:
-    f.write("TaxID\tAccession\tAF-model\tPosition\tpLDDT\tClass\tSecStruct\tRSA\tSS_Cys\tSS_avg_pLDDT\tSS_dist\tCA_dist\tX1\tX2\tX3\tX1\'\tX2\'\tConfiguration\tLigand\tDistance_Surface_Cys\tDistance_Surface_SG\tpKa\tProtein_#Cys\tProtein_Length\n")
+    f.write("TaxID\tAccession\tAF-model\tPosition\tpLDDT\tClass\tSecStruct\tRSA\tSS_Cys\tSS_avg_pLDDT\tSS_dist\tCA_dist\tX1\tX2\tX3\tX1\'\tX2\'\tLigand\tDistance_Surface_Cys\tDistance_Surface_SG\tpKa\tProtein_#Cys\tProtein_Length\n")
 
 #Check which accessions have already been checked.
 os.system("cat results_ext.txt | cut -f2 | uniq > done_accessions_ext")
@@ -59,13 +59,13 @@ for line in fasta_f:
 for acc in nrCys:
     taxid = taxids[acc]
     if nrCys[acc] == 0:
-        f.write(taxid + '\t' + acc + '\tNA' * 20 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+        f.write(taxid + '\t' + acc + '\tNA' * 19 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
     else:
         PDB_file = 'AF-' + acc + '-F1-model_v3.pdb'
         path = 'https://alphafold.ebi.ac.uk/files/AF-' + acc + '-F1-model_v3.pdb'
         os.system('wget -q ' + path + ' -O ' + PDB_file)
         if os.stat(PDB_file).st_size == 0:  #Dealing with non-existing AlphaFold model
-            f.write(taxid + '\t' + acc + '\tNoModel' * 20 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+            f.write(taxid + '\t' + acc + '\tNoModel' * 19 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
             os.system("rm -f " + PDB_file)
             continue
         print('Running now ' + PDB_file)
@@ -77,7 +77,7 @@ for acc in nrCys:
         for r in structure.get_residues():
             if re.search('CYS ',str(r)):
                 pos = int(re.findall(r'resseq=(\d+) ',str(r))[0])
-                results.update({pos: {'pLDDT': '','ss_cys': 'NA','distSurface': '999', 'distSurface_SG': '999', 'ss_dist': 'NA','ss_pLDDT': 'NA', 'ca_dist': 'NA', 'X1': 'NA', 'X2': 'NA', 'X3': 'NA', 'X2_prime': 'NA', 'X1_prime' : 'NA', 'conf': 'NA', 'ligand': 'NA', 'class': 'none', 'secStruct': 'NA', 'rsa': 'NA', 'pka': ''}})
+                results.update({pos: {'pLDDT': '','ss_cys': 'NA','distSurface': '999', 'distSurface_SG': '999', 'ss_dist': 'NA','ss_pLDDT': 'NA', 'ca_dist': 'NA', 'X1': 'NA', 'X2': 'NA', 'X3': 'NA', 'X2_prime': 'NA', 'X1_prime' : 'NA', 'ligand': 'NA', 'class': 'none', 'secStruct': 'NA', 'rsa': 'NA', 'pka': ''}})
         residues = [r for r in structure.get_residues()]
         
         ###GET THE pLDDT CONFIDENCE SCORES OF THE PREDICTION###
