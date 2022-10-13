@@ -7,7 +7,7 @@ Python3 was used to run this scripts, with following required packages:
 - math
 - Bio.PDB module
 
-For running the metal ligand predictions, please see requirements Metalloproteome algorithm ([here](https://github.com/Elcock-Lab/Metalloproteome)).
+For running the metal ligand predictions, please see requirements of the metal ligand searching algorithm ([here](https://github.com/Elcock-Lab/Metalloproteome)).
 
 ## Script workflow
 The scripts takes a UniProtKB FASTA file as input, which should be placed in the FASTA subfolder. This is the sole required argument of the script, e.g.:
