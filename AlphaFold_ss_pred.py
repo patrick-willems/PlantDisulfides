@@ -138,25 +138,18 @@ for acc in nrCys:
                         cys2_CA = residues[cys2]["CA"].get_vector()
                         cys2_N = residues[cys2]["N"].get_vector()
                         
-                        #CALCULATE THE FIVE ANGLES
-                        conf = ''
+                        #CALCULATE THE FIVE DIHEDRAL ANGLES
                         X1 = calc_dihedral(cys1_N, cys1_CA, cys1_CB, cys1_S)*180/math.pi
-                        conf += '+' if X1 > 0 else '-'
                         X2 = calc_dihedral(cys1_CA, cys1_CB, cys1_S,cys2_S)*180/math.pi
-                        conf += '+' if X2 > 0 else '-'
                         X3 = calc_dihedral(cys1_CB, cys1_S,cys2_S,cys2_CB)*180/math.pi
-                        conf += '+' if X3 > 0 else '-'
                         X2p = calc_dihedral(cys1_S,cys2_S,cys2_CB,cys2_CA)*180/math.pi
-                        conf += '+' if X2p > 0 else '-'
                         X1p = calc_dihedral(cys2_S,cys2_CB,cys2_CA,cys2_N)*180/math.pi
-                        conf += '+' if X1p > 0 else '-'
                         results[pos]["X1"] = format(X1,'.4f')
                         results[pos]["X2"] = format(X2,'.4f')
                         results[pos]["X3"] = format(X3,'.4f')
                         results[pos]["X2_prime"] = format(X2p,'.4f')
                         results[pos]["X1_prime"] = format(X1p,'.4f')
-
-                              
+                             
         ###RUN METALLOPROTEOME###
         os.system("./bin/analyze_alphafold2_metal_clusters_for_release.exe " + PDB_file + " ligand_list_FES_ZINC_RMSD_0.5_12_LIGANDS 0.0 8.0 2.0 2.5 0.0 2.5 998 > /dev/null 2>&1")
         output_metal = open("ligand_summary_info_000998.txt",'r')
