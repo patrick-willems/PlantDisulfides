@@ -20,7 +20,7 @@ fasta = sys.argv[1]
 outfile = 'results.txt'
 f = open(outfile, "a")
 if os.stat('results.txt').st_size == 0:
-    f.write("TaxID\tAccession\tAF-model\tPosition\tpLDDT\tClass\tSecStruct\tRSA\tSS_Cys\tSS_avg_pLDDT\tSS_dist\tCA_dist\tX1\tX2\tX3\tX1\'\tX2\'\tConfiguration\tLigand\tProtein_#Cys\tProtein_Length\n")
+    f.write("TaxID\tAccession\tAF-model\tPosition\tpLDDT\tClass\tSecStruct\tRSA\tSS_Cys\tSS_avg_pLDDT\tSS_dist\tCA_dist\tX1\tX2\tX3\tX1\'\tX2\'\tLigand\tProtein_#Cys\tProtein_Length\n")
 
 #Check which accessions have already been performed so the script does not re-run these.
 os.system("cat results.txt | cut -f2 | uniq > done_accessions")
@@ -63,7 +63,7 @@ for acc in nrCys:
     
     #There are no cysteines in this protein so skip it.
     if nrCys[acc] == 0:
-        f.write(taxid + '\t' + acc + '\tNA' * 17 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+        f.write(taxid + '\t' + acc + '\tNA' * 16 + '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
     else:
         ###GET ALPHAFOLD2###
         #First of all, attempt to download the AlphaFold2 model
@@ -73,7 +73,7 @@ for acc in nrCys:
         
         #Dealing with non-existing AlphaFold model, so skip
         if os.stat(PDB_file).st_size == 0: 
-            f.write(taxid + '\t' + acc + '\tNoModel' * 17+ '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+            f.write(taxid + '\t' + acc + '\tNoModel' * 16+ '\t' + str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
             os.system("rm -f " + PDB_file)
             continue
         
@@ -86,7 +86,7 @@ for acc in nrCys:
         for r in structure.get_residues():
             if re.search('CYS ',str(r)):
                 pos = int(re.findall(r'resseq=(\d+) ',str(r))[0])
-                results.update({pos: {'pLDDT': '','ss_cys': 'NA', 'ss_dist': 'NA','ss_pLDDT': 'NA', 'ca_dist': 'NA', 'X1': 'NA', 'X2': 'NA', 'X3': 'NA', 'X2_prime': 'NA', 'X1_prime' : 'NA', 'conf': 'NA', 'ligand': 'NA', 'class': 'none', 'secStruct': 'NA', 'rsa': 'NA', 'pka': ''}})
+                results.update({pos: {'pLDDT': '','ss_cys': 'NA', 'ss_dist': 'NA','ss_pLDDT': 'NA', 'ca_dist': 'NA', 'X1': 'NA', 'X2': 'NA', 'X3': 'NA', 'X2_prime': 'NA', 'X1_prime' : 'NA', 'ligand': 'NA', 'class': 'none', 'secStruct': 'NA', 'rsa': 'NA', 'pka': ''}})
         residues = [r for r in structure.get_residues()]
         
         ###pLDDT VALUES###
@@ -156,29 +156,7 @@ for acc in nrCys:
                         results[pos]["X2_prime"] = format(X2p,'.4f')
                         results[pos]["X1_prime"] = format(X1p,'.4f')
 
-                        #Determine configuration
-                        if conf == "-----": results[pos]["conf"] = 'SS_-LHSpiral'
-                        elif conf == "-++--": results[pos]["conf"] = 'SS_-RHHook'
-                        elif conf == "+----": results[pos]["conf"] = 'SS_+/-LHSpiral'
-                        elif conf == "---+-": results[pos]["conf"] = 'SS_-LHHook'
-                        elif conf == "+++--": results[pos]["conf"] = 'SS_-/+RHHook'
-                        elif conf == "--+--": results[pos]["conf"] = 'SS_-RHStaple'
-                        elif conf == "++++-": results[pos]["conf"] = 'SS_+/-RHSpiral'
-                        elif conf == "-+++-": results[pos]["conf"] = 'SS_-RHSpiral'
-                        elif conf == "++---": results[pos]["conf"] = 'SS_-/+LHHook'
-                        elif conf == "+--+-": results[pos]["conf"] = 'SS_+/-LHHook'
-                        elif conf == "+++++": results[pos]["conf"] = 'SS_+RHSpiral'
-                        elif conf == "+-++-": results[pos]["conf"] = 'SS_+/-RHHook'
-                        elif conf == "++-+-": results[pos]["conf"] = 'SS_+/-LHStaple'
-                        elif conf == "-+-+-": results[pos]["conf"] = 'SS_-LHStaple'
-                        elif conf == "+--++": results[pos]["conf"] = 'SS_+LHHook'
-                        elif conf == "+---+": results[pos]["conf"] = 'SS_+LHSpiral'
-                        elif conf == "+-+--": results[pos]["conf"] = 'SS_+/-RHStaple'
-                        elif conf == "+++-+": results[pos]["conf"] = 'SS_+RHHook'
-                        elif conf == "+-+-+": results[pos]["conf"] = 'SS_+RHStaple'
-                        elif conf == "++-++": results[pos]["conf"] = 'SS_+LHStaple'
-                        else: results[pos]["conf"] = 'SS_NoClass' 
-            
+                              
         ###RUN METALLOPROTEOME###
         os.system("./bin/analyze_alphafold2_metal_clusters_for_release.exe " + PDB_file + " ligand_list_FES_ZINC_RMSD_0.5_12_LIGANDS 0.0 8.0 2.0 2.5 0.0 2.5 998 > /dev/null 2>&1")
         output_metal = open("ligand_summary_info_000998.txt",'r')
@@ -191,18 +169,8 @@ for acc in nrCys:
                     results[int(cys)]['ligand'] = metal
                     results[int(cys)]['class'] = 'metal'
 
-        ###RUN PROPKA3###
-        #os.system("propka -s " + PDB_file + ' > /dev/null 2>&1')
-        #pka_f = re.findall('(AF-.+.)pdb', PDB_file)[0] + 'pka'
-        #with open(pka_f) as file:
-        #    for line in file:
-        #        if re.match('^CYS\s*\d+\s+A.+%', line):
-        #            pos = re.findall('^CYS\s*(\d+)\s+A\s+\S+\s+', line)[0]
-        #            pka = re.findall('^CYS\s*\d+\s+A\s+(\S+)\s+', line)[0]
-        #            results[int(pos)]["pka"] = str(pka)
-
         #Print all output and clean-up pdb
         for pos in results:
-            f.write(taxid+'\t'+acc+'\t'+PDB_file+'\t'+str(pos)+'\t'+str(results[pos]["pLDDT"])+'\t'+results[pos]['class']+'\t'+results[pos]['secStruct']+'\t'+results[pos]['rsa']+'\t'+str(results[pos]['ss_cys'])+'\t'+str(results[pos]["ss_pLDDT"])+'\t'+str(results[pos]['ss_dist'])+'\t'+str(results[pos]['ca_dist'])+'\t'+str(results[pos]['X1'])+'\t'+str(results[pos]['X2'])+'\t'+str(results[pos]['X3'])+'\t'+str(results[pos]['X2_prime'])+'\t'+str(results[pos]['X1_prime'])+'\t'+results[pos]['conf']+'\t'+results[pos]['ligand']+'\t'+str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+            f.write(taxid+'\t'+acc+'\t'+PDB_file+'\t'+str(pos)+'\t'+str(results[pos]["pLDDT"])+'\t'+results[pos]['class']+'\t'+results[pos]['secStruct']+'\t'+results[pos]['rsa']+'\t'+str(results[pos]['ss_cys'])+'\t'+str(results[pos]["ss_pLDDT"])+'\t'+str(results[pos]['ss_dist'])+'\t'+str(results[pos]['ca_dist'])+'\t'+str(results[pos]['X1'])+'\t'+str(results[pos]['X2'])+'\t'+str(results[pos]['X3'])+'\t'+str(results[pos]['X2_prime'])+'\t'+str(results[pos]['X1_prime'])+'\t'+results[pos]['ligand']+'\t'+str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
         os.system("rm -f " + PDB_file + " *0998.txt *.pka")
 f.close()
