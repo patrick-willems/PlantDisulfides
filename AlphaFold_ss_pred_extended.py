@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Iterate AlphaFold PDB files in folder and run DSSP, PropKa3, perform S-S distance calculations and parse corresponding PAE from the AF predictions."""
+"""Iterate AlphaFold PDB files of given UniProtKB FASTA and run DSSP, PropKa3, perform S-S distance calculations and parse corresponding PAE from the AF predictions."""
 
 __author__  = "Patrick Willems"
 __email__   = "willems533@gmail.com"           
@@ -151,30 +151,7 @@ for acc in nrCys:
                         results[pos]["X3"] = format(X3,'.4f')
                         results[pos]["X2_prime"] = format(X2p,'.4f')
                         results[pos]["X1_prime"] = format(X1p,'.4f')
-
-                        #Determine configuration
-                        if conf == "-----": results[pos]["conf"] = 'SS_-LHSpiral'
-                        elif conf == "-++--": results[pos]["conf"] = 'SS_-RHHook'
-                        elif conf == "+----": results[pos]["conf"] = 'SS_+/-LHSpiral'
-                        elif conf == "---+-": results[pos]["conf"] = 'SS_-LHHook'
-                        elif conf == "+++--": results[pos]["conf"] = 'SS_-/+RHHook'
-                        elif conf == "--+--": results[pos]["conf"] = 'SS_-RHStaple'
-                        elif conf == "++++-": results[pos]["conf"] = 'SS_+/-RHSpiral'
-                        elif conf == "-+++-": results[pos]["conf"] = 'SS_-RHSpiral'
-                        elif conf == "++---": results[pos]["conf"] = 'SS_-/+LHHook'
-                        elif conf == "+--+-": results[pos]["conf"] = 'SS_+/-LHHook'
-                        elif conf == "+++++": results[pos]["conf"] = 'SS_+RHSpiral'
-                        elif conf == "+-++-": results[pos]["conf"] = 'SS_+/-RHHook'
-                        elif conf == "++-+-": results[pos]["conf"] = 'SS_+/-LHStaple'
-                        elif conf == "-+-+-": results[pos]["conf"] = 'SS_-LHStaple'
-                        elif conf == "+--++": results[pos]["conf"] = 'SS_+LHHook'
-                        elif conf == "+---+": results[pos]["conf"] = 'SS_+LHSpiral'
-                        elif conf == "+-+--": results[pos]["conf"] = 'SS_+/-RHStaple'
-                        elif conf == "+++-+": results[pos]["conf"] = 'SS_+RHHook'
-                        elif conf == "+-+-+": results[pos]["conf"] = 'SS_+RHStaple'
-                        elif conf == "++-++": results[pos]["conf"] = 'SS_+LHStaple'
-                        else: results[pos]["conf"] = 'SS_NoClass' 
-            
+                        
         ###RUN METALLOPROTEOME###
         os.system("./bin/analyze_alphafold2_metal_clusters_for_release.exe " + PDB_file + " ligand_list_FES_ZINC_RMSD_0.5_12_LIGANDS 0.0 8.0 2.0 2.5 0.0 2.5 998 > /dev/null 2>&1")
         output_metal = open("ligand_summary_info_000998.txt",'r')
