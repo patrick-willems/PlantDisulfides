@@ -16,19 +16,19 @@ The scripts takes a UniProtKB FASTA file as input, which should be placed in the
 
 - All FASTA entries will be parsed and AlphaFold2 models will be downloaded from https://alphafold.ebi.ac.uk/.
 - For each cysteine:
-  - The residue the relative solvent accessibility (RSA) and secondary structure will be predicted using DSSP (available Bio.PDB)
-  - The pLDDT value will be extracted from the AlphaFold2 PDB file.
-  - Possible disulfides will be defined if the 'SG' atom is within 2.5 A of any other cysteine. 
+  - The residue the relative solvent accessibility (RSA) and secondary structure will be predicted using DSSP (available via Bio.PDB)
+  - The pLDDT value will be extracted from the AlphaFold2 PDB file (stored in the B-factor fields).
+  - Disulfides will be assigned if the sulfur ('SG') atom is within 2.5 Å distance of another cysteine sulfur atom. 
 - For all disulfides:
-  - The S-S atom distance and CA-CA atom distance is calculated.
-  - Five dihedral angles are calculated (X1, X2, X3, X1' and X2') using Bio.PDB calc_dihedral().
-  - The average pLDDT is calculated as (pLDDT SS_Cys1 + pLDDT SS_Cys2) / 2 
+  - The SG-SG and Cα-Cα atom distance is calculated.
+  - Five dihedral angles are calculated (χ1, χ2, χ3, χ1' and χ2') using the Bio.PDB calc_dihedral() function.
+  - The average pLDDT is calculated as: (pLDDT Cys1 + pLDDT Cys2) / 2 
 - For all proteins:
-  - Metal ligand binding was predicted using the Metalloproteome algorithm ([github link](https://github.com/Elcock-Lab/Metalloproteome)), required files were copied within this repository.
-  - The TaxID, length and number of cysteine of the protein is provided (derived from FASTA).
+  - Metal ligand binding was predicted using a published metal ligand searching algorithm ([github link](https://github.com/Elcock-Lab/Metalloproteome)), required files were copied within this repository (see note below).
+  - The TaxID, length and number of cysteines of the protein is provided (derived from FASTA).
   - The downloaded AlphaFold2 PDB filename is provided.
 
-Important: make sure to specify correct file paths for the metal ligand searching algorithm (here /bin and /src folders) and place the PDB templates of the ligand within the main folder.
+Important: make sure to specify correct file paths for the metal ligand searching algorithm (here /bin and /src folders) and place the PDB templates of the ligands within the main folder.
 
 ## Output
 
