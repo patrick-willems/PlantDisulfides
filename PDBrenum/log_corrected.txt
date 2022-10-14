@@ -1,3 +1,0 @@
-SP PDB_id chain_PDB   chain_auth  UniProt             SwissProt              uni_len chain_len     renum 5k_or_50k
-+  6dd2   A           A           D8T7G0              D8T7G0_SELML               413       413       208         0
-+  6dd2   B           B           D8T7G0              D8T7G0_SELML               414       414       209         0
