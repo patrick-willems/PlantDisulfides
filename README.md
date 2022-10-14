@@ -28,7 +28,7 @@ The scripts takes a UniProtKB FASTA file as input, which should be placed in the
   - The TaxID, length and number of cysteine of the protein is provided (derived from FASTA).
   - The downloaded AlphaFold2 PDB filename is provided.
 
-Important: make sure to specify correct file paths for the metal ligand searching algorithm.
+Important: make sure to specify correct file paths for the metal ligand searching algorithm (here /bin and /src folders) and place the PDB templates of the ligand within the main folder.
 
 ## Output
 
