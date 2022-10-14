@@ -26,10 +26,15 @@ The scripts takes a UniProtKB FASTA file as input, which should be placed in the
 - For all proteins:
   - Metal ligand binding was predicted using the Metalloproteome algorithm ([github link](https://github.com/Elcock-Lab/Metalloproteome)), required files were copied within this repository.
   - The TaxID, length and number of cysteine of the protein is provided (derived from FASTA).
-  - The download AlphaFold2 model filename is provided.
-  - Optionally a pKa value can be predicted using propka3.0 (requires local install) - however this takes relatively long making whole proteome predictions too long, hence was skipped here.
+  - The downloaded AlphaFold2 PDB filename is provided.
+
+Important: make sure to specify correct file paths for the metal ligand searching algorithm.
 
 ## Output
 
 All predictions are stored in a tab-delimited file 'results.txt' with columns providing all information calculated above for each protein cysteine individually (rows).
 If running multiple FASTA files after each other, novel results/rows will be appended to this output file. UniProtKB protein accessions that already have been processed, and thus are within the current 'results.txt' file, will not be re-processed.
+
+## Extended form of the script:
+
+Alphafold_ss_extended.py requires the same FASTA input but will include additional structural predictions such as pKa value by PROPKA3 (Olsson et al., 2011), and average cysteine residue depth as well cysteine sulfur atom residue depth calculated by MSMS (Sanner et al., 1996). This requires the correct installation of these algorithms.
