@@ -37,4 +37,4 @@ If running multiple FASTA files after each other, novel results/rows will be app
 
 ## Extended form of the script:
 
-Alphafold_ss_extended.py requires the same FASTA input but will include additional structural predictions such as pKa value by PROPKA3 (Olsson et al., 2011), and average cysteine residue depth as well cysteine sulfur atom residue depth calculated by MSMS (Sanner et al., 1996). This requires the correct installation of these algorithms.
+Alphafold_ss_pred_extended.py requires the same FASTA input but will include additional structural predictions such as pKa value by PROPKA3 (Olsson et al., 2011), and average cysteine residue depth as well cysteine sulfur atom residue depth calculated by MSMS (Sanner et al., 1996). This requires the correct installation of these algorithms.
