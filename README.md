@@ -1,5 +1,5 @@
 # ssbond_parse_plants
-Parsing disulfide bonds from AlphaFold2 predictions.
+Parsing disulfide bonds from AlphaFold2 predictions. More information regarding the script is found below. The functional annotation for cysteine residues can be downloaded separately for all fifteen plant species in the DATA folder.
 
 ## Installation and requirements
 Python3 was used to run this scripts, with following required packages:
