@@ -20,7 +20,7 @@ The scripts takes a UniProtKB FASTA file as input, which should be placed in the
   - The pLDDT value will be extracted from the AlphaFold2 PDB file (stored in the B-factor fields).
   - Disulfides will be assigned if the sulfur ('SG') atom is within 2.5 Å distance of another cysteine sulfur atom. 
 - For all disulfides:
-  - The SG-SG and Cα-Cα atom distance is calculated.
+  - The Sγ-Sγ and Cα-Cα atom distance is calculated.
   - Five dihedral angles are calculated (χ1, χ2, χ3, χ1' and χ2') using the Bio.PDB calc_dihedral() function.
   - The average pLDDT is calculated as: (pLDDT Cys1 + pLDDT Cys2) / 2 
 - For all proteins:
