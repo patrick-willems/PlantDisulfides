@@ -1,5 +1,5 @@
-# ssbond_parse_plants
-Parsing disulfide bonds from AlphaFold2 predictions. More information regarding the script is found below. The functional annotation for cysteine residues can be downloaded separately for all fifteen plant species in the DATA folder.
+# Plant Disulfides
+Parsing disulfide bonds and metal binding sites from AlphaFold2 structure predictions. More information regarding the script is found below. The functional annotation for cysteine residues can be downloaded separately for all fifteen plant species in the DATA folder.
 
 ## Installation and requirements
 Python3 was used to run this scripts, with following required packages:
@@ -12,7 +12,7 @@ For running the metal ligand predictions, please see requirements of the metal l
 ## Script workflow
 The scripts takes a UniProtKB FASTA file as input, which should be placed in the FASTA subfolder. This is the sole required argument of the script, e.g.:
 
-<code>python3 Alphafold_ss_pred.py FASTA/test.fasta</code>
+<code>python3 Alphafold_ss_pred.py FASTA/UP000006548_3702.fasta</code>
 
 - All FASTA entries will be parsed and AlphaFold2 models will be downloaded from https://alphafold.ebi.ac.uk/.
 - For each cysteine:
