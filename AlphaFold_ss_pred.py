@@ -32,7 +32,7 @@ for line in done_acc:
     
 ###READ FASTA###
 #This will iterate over the provided FASTA file and parse the number of cysteines and protein lengths for overall statistic purposes.
-#From the UniProt header lines it will store the UniProtKB accessions alon with their species taxid from the OX element.
+#From the UniProt header lines it will store the UniProtKB accessions along with their species taxid from the OX element.
 nrCys = {}
 lengths = {}
 taxids = {}
@@ -90,7 +90,7 @@ for acc in nrCys:
         residues = [r for r in structure.get_residues()]
         
         ###pLDDT VALUES###
-        #Read in the pLDDT values for all cysteines within the structure. These values are specified within the AlphaFold2 PDB files.
+        #Read in the pLDDT values for all cysteines within the structure. These values are specified within the B-factor fields of AlphaFold2 PDB files.
         PDB_read = open(PDB_file,'r')
         for line in PDB_read:
             if re.search(r'^ATOM.+CYS A',line):
@@ -109,7 +109,7 @@ for acc in nrCys:
                 results[pos]['secStruct'] = ss
 
         ###EXTRACT DISULFIDES###
-        #Calculate all pairwise cysteine S-S distances, dihedral angles and determine configuration
+        #Calculate all pairwise cysteine S-S distances and dihedral angles in case of disulfides
         for cys1 in results:
             pos = cys1
             cys1 = cys1 - 1
@@ -151,6 +151,7 @@ for acc in nrCys:
                         results[pos]["X1_prime"] = format(X1p,'.4f')
                              
         ###RUN METALLOPROTEOME###
+        #This runs the metal search algorithm described by Wehrspan et al. (2022) - see https://github.com/Elcock-Lab/Metalloproteome 
         os.system("./bin/analyze_alphafold2_metal_clusters_for_release.exe " + PDB_file + " ligand_list_FES_ZINC_RMSD_0.5_12_LIGANDS 0.0 8.0 2.0 2.5 0.0 2.5 998 > /dev/null 2>&1")
         output_metal = open("ligand_summary_info_000998.txt",'r')
         for line in output_metal:
