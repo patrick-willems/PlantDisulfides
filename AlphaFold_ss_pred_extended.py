@@ -170,6 +170,6 @@ for acc in nrCys:
 
         #Print all output and clean-up pdb
         for pos in results:
-            f.write(taxid+'\t'+acc+'\t'+PDB_file+'\t'+str(pos)+'\t'+str(results[pos]["pLDDT"])+'\t'+results[pos]['class']+'\t'+results[pos]['secStruct']+'\t'+results[pos]['rsa']+'\t'+str(results[pos]['ss_cys'])+'\t'+str(results[pos]["ss_pLDDT"])+'\t'+str(results[pos]['ss_dist'])+'\t'+str(results[pos]['ca_dist'])+'\t'+str(results[pos]['X1'])+'\t'+str(results[pos]['X2'])+'\t'+str(results[pos]['X3'])+'\t'+str(results[pos]['X2_prime'])+'\t'+str(results[pos]['X1_prime'])+'\t'+results[pos]['conf']+'\t'+results[pos]['ligand']+'\t'+str(results[pos]['distSurface'])+'\t'+str(results[pos]['distSurface_SG'])+'\t'+str(results[pos]['pka'])+'\t'+str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
+            f.write(taxid+'\t'+acc+'\t'+PDB_file+'\t'+str(pos)+'\t'+str(results[pos]["pLDDT"])+'\t'+results[pos]['class']+'\t'+results[pos]['secStruct']+'\t'+results[pos]['rsa']+'\t'+str(results[pos]['ss_cys'])+'\t'+str(results[pos]["ss_pLDDT"])+'\t'+str(results[pos]['ss_dist'])+'\t'+str(results[pos]['ca_dist'])+'\t'+str(results[pos]['X1'])+'\t'+str(results[pos]['X2'])+'\t'+str(results[pos]['X3'])+'\t'+str(results[pos]['X1_prime'])+'\t'+str(results[pos]['X2_prime'])+'\t'+results[pos]['conf']+'\t'+results[pos]['ligand']+'\t'+str(results[pos]['distSurface'])+'\t'+str(results[pos]['distSurface_SG'])+'\t'+str(results[pos]['pka'])+'\t'+str(nrCys[acc])+'\t'+str(lengths[acc])+'\n')
         os.system("rm -f " + PDB_file + " *0998.txt *.pka")
 f.close()
